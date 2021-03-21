@@ -2,13 +2,13 @@ defmodule Flightex.Bookings.Report do
   alias Flightex.Bookings.Agent, as: BookingAgent
   alias Flightex.Bookings.Booking, as: Booking
 
-  def create(%NaiveDateTime{} = from_date, %NaiveDateTime{} = to_date) do
+  def create(filename, %NaiveDateTime{} = from_date, %NaiveDateTime{} = to_date) do
     formatted_flights = fetch_available_flights(from_date, to_date)
-    File.write("report.csv", formatted_flights)
+    File.write(filename, formatted_flights)
     {:ok, "Report generated successfully"}
   end
 
-  def create(_from_date, _to_date) do
+  def create(_filename, _from_date, _to_date) do
     {:error, "Report could not be generated because dates aren't in the correct format"}
   end
 
