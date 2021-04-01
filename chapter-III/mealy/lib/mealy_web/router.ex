@@ -1,13 +1,15 @@
 defmodule MealyWeb.Router do
   use MealyWeb, :router
-  alias MealyWeb.MealsController
+  alias MealyWeb.Plugs.UUIDChecker
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug UUIDChecker
   end
 
   scope "/api", MealyWeb do
     pipe_through :api
+
     resources "/meals", MealsController, only: [:show, :create, :update, :delete]
   end
 

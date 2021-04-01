@@ -41,6 +41,8 @@ defmodule Mealy.MixProject do
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
+      {:atomic_map, "~> 0.8"},
+      {:poison, "~> 3.1"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"}
     ]
