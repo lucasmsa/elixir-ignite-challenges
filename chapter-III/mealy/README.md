@@ -14,4 +14,4 @@
     - [x]  Show an existing Meal, returning status `200` and the Meal you searched for
     - [x]  Delete a Meal, returning status `204`
 
-- [x]  Test the application with 100% coverage 🧪
+- [x]  Test the application's functionalities (Controllers, CRUD operations) 🧪 
