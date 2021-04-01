@@ -5,6 +5,8 @@ defmodule MealyWeb.MealsController do
   action_fallback(MealyWeb.FallbackController)
 
   def create(conn, params) do
+    params = for {key, val} <- params, into: %{}, do: {String.to_atom(key), val}
+
     with {:ok, %Meal{} = meal} <- Mealy.create_meal(params) do
       conn
       |> put_status(:created)
@@ -35,6 +37,8 @@ defmodule MealyWeb.MealsController do
   end
 
   def update(conn, params) do
+    params = for {key, val} <- params, into: %{}, do: {String.to_atom(key), val}
+
     with {:ok, %Meal{} = meal} <- Mealy.update_meal(params) do
       conn
       |> put_status(:accepted)

@@ -1,19 +1,17 @@
-# Mealy
+- Making a simple CRUD application with Phoenix 🥷🏻
 
-To start your Phoenix server:
+---
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+- [x]  It must contain a schema called `Meal` with the following fieds:
+    - `id` → UUID type, and should be generated automatically
+    - `description` → A string containing informations about the Meal
+    - `date` → Store the hour that the meal was consumed
+    - `calories` → Amount of calories, Float
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+- [x]  CRUD operations
+    - [x]  Create a new Meal, returning status `201`
+    - [x]  Updating a Meal, returning status `200` and the updated Meal
+    - [x]  Show an existing Meal, returning status `200` and the Meal you searched for
+    - [x]  Delete a Meal, returning status `204`
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+- [x]  Test the application with 100% coverage 🧪

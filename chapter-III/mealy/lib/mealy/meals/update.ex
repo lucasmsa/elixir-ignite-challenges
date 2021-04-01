@@ -1,8 +1,8 @@
 defmodule Mealy.Meals.Update do
   alias Mealy.Repo
-  alias Mealy.{Meal, Error}
+  alias Mealy.{Error, Meal}
 
-  def call(%{"id" => id} = params) do
+  def call(%{id: id} = params) do
     case Repo.get(Meal, id) do
       nil ->
         {:error, Error.user_not_found_error()}

@@ -1,10 +1,10 @@
 defmodule Mealy.Meals.Create do
   alias Mealy.{Error, Meal, Repo}
 
-  def call(%{"date" => date} = params) do
+  def call(%{date: date} = params) do
     date = parse_date(date)
 
-    %{params | "date" => date}
+    %{params | date: date}
     |> Meal.changeset()
     |> Repo.insert()
     |> handle_insert()
