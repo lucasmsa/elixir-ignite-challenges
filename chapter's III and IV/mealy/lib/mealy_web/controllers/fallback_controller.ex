@@ -1,7 +1,7 @@
 defmodule MealyWeb.FallbackController do
   use MealyWeb, :controller
-  alias MealyWeb.ErrorView
   alias Mealy.Error
+  alias MealyWeb.ErrorView
 
   def call(conn, {:error, %Error{status: status, reason: reason}}) do
     conn

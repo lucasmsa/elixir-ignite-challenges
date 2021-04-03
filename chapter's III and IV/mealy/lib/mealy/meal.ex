@@ -3,13 +3,15 @@ defmodule Mealy.Meal do
   import Ecto.Changeset
 
   @primary_key {:id, :binary_id, autogenerate: true}
-  @required_params [:description, :date, :calories]
-  @derive {Jason.Encoder, only: [:id, :calories, :date, :description]}
+  @foreign_key_type :binary_id
+  @required_params [:description, :date, :calories, :user_id]
+  @derive {Jason.Encoder, only: @required_params ++ [:id]}
 
   schema "meals" do
     field(:description, :string)
     field(:date, :naive_datetime)
     field(:calories, :float)
+    belongs_to(:user, Mealy.User)
 
     timestamps()
   end

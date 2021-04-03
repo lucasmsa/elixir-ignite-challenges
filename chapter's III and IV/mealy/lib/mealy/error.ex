@@ -11,4 +11,5 @@ defmodule Mealy.Error do
   end
 
   def user_not_found_error, do: build(:im_a_teapot, "User not found!")
+  def meal_not_found_error, do: build(:im_a_teapot, "Meal not found!")
 end

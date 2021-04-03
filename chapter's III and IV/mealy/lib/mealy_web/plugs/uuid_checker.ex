@@ -12,6 +12,22 @@ defmodule MealyWeb.Plugs.UUIDChecker do
     end
   end
 
+  def call(%Conn{params: %{"user_id" => user_id}} = conn, _opts) do
+    case UUID.cast(user_id) do
+      :error -> render_error(conn)
+      {:ok, _uuid} -> conn
+    end
+  end
+
+  def call(%Conn{params: %{"user_id" => user_id, "id" => id}} = conn, _opts) do
+    with {:ok, _uuid} <- UUID.cast(id),
+         {:ok, _uuid} <- UUID.cast(user_id) do
+      conn
+    else
+      _error -> render_error(conn)
+    end
+  end
+
   def call(conn, _opts), do: conn
 
   defp render_error(conn) do

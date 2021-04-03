@@ -1,14 +1,19 @@
 defmodule Mealy.Meals.Create do
-  alias Mealy.{Error, Meal, Repo}
+  alias Mealy.{Error, Meal, Repo, User}
 
-  def call(%{date: date} = params) do
+  def call(%{date: date, user_id: user_id} = params) do
     date = parse_date(date)
 
-    %{params | date: date}
-    |> Meal.changeset()
-    |> Repo.insert()
-    |> handle_insert()
-    |> handle_insert()
+    case Repo.get(User, user_id) do
+      nil ->
+        {:error, Error.user_not_found_error()}
+
+      _user ->
+        %{params | date: date}
+        |> Meal.changeset()
+        |> Repo.insert()
+        |> handle_insert()
+    end
   end
 
   defp handle_insert({:ok, _meal} = result), do: result

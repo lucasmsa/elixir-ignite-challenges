@@ -11,6 +11,7 @@ defmodule MealyWeb.Router do
     pipe_through :api
 
     resources "/meals", MealsController, only: [:show, :create, :update, :delete]
+    resources "/users", UsersController, only: [:show, :create, :delete]
   end
 
   # Enables LiveDashboard only for development
