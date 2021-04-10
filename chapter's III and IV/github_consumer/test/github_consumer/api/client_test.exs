@@ -3,7 +3,7 @@ defmodule GithubConsumer.Api.ClientTest do
   alias Plug.Conn
   alias GithubConsumer.Api.Client, as: GithubClient
 
-  describe "" do
+  describe "get_user_repo_info/1" do
     setup do
       bypass = Bypass.open()
 
