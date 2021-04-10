@@ -10,6 +10,7 @@ config :github_consumer, GithubConsumer.Repo,
   password: "postgres",
   database: "github_consumer_test#{System.get_env("MIX_TEST_PARTITION")}",
   hostname: "localhost",
+  port: 5443,
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,

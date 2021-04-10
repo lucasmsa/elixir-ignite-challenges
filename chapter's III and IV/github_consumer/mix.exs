@@ -42,6 +42,7 @@ defmodule GithubConsumer.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:tesla, "~> 1.4.0"},
       {:hackney, "~> 1.17.0"},
+      {:bypass, "~> 2.1", only: :test},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"}

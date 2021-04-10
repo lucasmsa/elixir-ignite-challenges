@@ -27,6 +27,10 @@ defmodule GithubConsumer.Api.Client do
     {:error, "User could not be found!"}
   end
 
+  defp handle_get({:error, reason}) do
+    {:error, reason}
+  end
+
   defp fetch_repo_info(repo) do
     :maps.filter(fn key, _value -> key in @repository_data end, repo)
   end
