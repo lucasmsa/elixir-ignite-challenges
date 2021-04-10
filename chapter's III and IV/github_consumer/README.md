@@ -1,4 +1,4 @@
 - [x]  Consume GitHub's API using the library [Tesla](https://github.com/teamon/tesla)
-    - [x]  The module call shall return the user's `id` , `name` , `description` , `html_url` and `stargazers_count`
+    - [x]  The module call shall return - for each user's repository - its `id` , `name` , `description` , `html_url` and `stargazers_count`
     - [x]  Have one route which will receive user's `username` and return the data described above with status `200` or `404` if the user couldn't be found
 - [x]  Test the client created using [Bypass](https://github.com/PSPDFKit-labs/bypass)
