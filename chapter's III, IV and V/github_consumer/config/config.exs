@@ -10,6 +10,8 @@ use Mix.Config
 config :github_consumer,
   ecto_repos: [GithubConsumer.Repo]
 
+config :github_consumer, GithubConsumer.Repo, migration_primary_key: [type: :binary_id]
+
 # Configures the endpoint
 config :github_consumer, GithubConsumerWeb.Endpoint,
   url: [host: "localhost"],

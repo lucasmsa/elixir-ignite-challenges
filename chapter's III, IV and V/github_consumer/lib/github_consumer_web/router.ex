@@ -7,7 +7,8 @@ defmodule GithubConsumerWeb.Router do
 
   scope "/api", GithubConsumerWeb do
     pipe_through(:api)
-    get("/:username", ClientController, :show)
+    get("github/:username", ClientController, :show)
+    post("user/", UsersController, :create)
   end
 
   # Enables LiveDashboard only for development
