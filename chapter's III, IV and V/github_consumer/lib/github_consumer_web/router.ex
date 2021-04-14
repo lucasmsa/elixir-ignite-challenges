@@ -5,10 +5,20 @@ defmodule GithubConsumerWeb.Router do
     plug(:accepts, ["json"])
   end
 
+  pipeline :auth do
+    plug(GithubConsumerWeb.Auth.Pipeline)
+  end
+
+  scope "/api", GithubConsumerWeb do
+    pipe_through([:api, :auth])
+    get("github/:username", ClientController, :show)
+    get("user/:id", UsersController, :show)
+  end
+
   scope "/api", GithubConsumerWeb do
     pipe_through(:api)
-    get("github/:username", ClientController, :show)
     post("user/", UsersController, :create)
+    post("user/signin", UsersController, :signin)
   end
 
   # Enables LiveDashboard only for development

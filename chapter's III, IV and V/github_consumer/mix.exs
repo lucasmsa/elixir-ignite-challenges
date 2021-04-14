@@ -39,6 +39,7 @@ defmodule GithubConsumer.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:phoenix_live_dashboard, "~> 0.4"},
       {:telemetry_metrics, "~> 0.4"},
+      {:guardian, "~> 2.0"},
       {:telemetry_poller, "~> 0.4"},
       {:tesla, "~> 1.4.0"},
       {:hackney, "~> 1.17.0"},

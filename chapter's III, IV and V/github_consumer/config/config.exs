@@ -12,6 +12,14 @@ config :github_consumer,
 
 config :github_consumer, GithubConsumer.Repo, migration_primary_key: [type: :binary_id]
 
+config :github_consumer, GithubConsumerWeb.Auth.Guardian,
+  issuer: "github_consumer",
+  secret_key: "zs1RM0+ch3IU+Ga+bigljCtKpOmCqRqx7O0xCibu0O+Ro3bDwz0cqrYa5pmrcyIe"
+
+config :github_consumer, GithubConsumerWeb.Auth.Pipeline,
+  module: GithubConsumerWeb.Auth.Guardian,
+  error_handler: GithubConsumerWeb.Auth.ErrorHandler
+
 # Configures the endpoint
 config :github_consumer, GithubConsumerWeb.Endpoint,
   url: [host: "localhost"],
