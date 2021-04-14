@@ -17,7 +17,7 @@ defmodule GithubConsumerWeb.Auth.Guardian do
   def authenticate(%{"id" => id, "password" => password}) do
     with {:ok, %User{} = user} <- GithubConsumer.get_user(id),
          true <- Pbkdf2.verify_pass(password, user.password_hash),
-         {:ok, token, _claims} <- encode_and_sign(user) do
+         {:ok, token, _claims} <- encode_and_sign(user, %{}, ttl: {1, :minute}) do
       {:ok, user, token}
     else
       false -> {:error, "Passwords do not match!"}

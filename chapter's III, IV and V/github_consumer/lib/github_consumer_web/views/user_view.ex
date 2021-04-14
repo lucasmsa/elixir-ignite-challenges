@@ -9,9 +9,10 @@ defmodule GithubConsumerWeb.UsersView do
     }
   end
 
-  def render("user.json", %{user: user}) do
+  def render("user.json", %{user: user, refresh_token: refresh_token}) do
     %{
-      user: user
+      user: user,
+      refresh_token: refresh_token
     }
   end
 

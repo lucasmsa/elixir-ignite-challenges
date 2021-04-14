@@ -6,7 +6,7 @@ defmodule GithubConsumerWeb.UsersController do
 
   def create(conn, params) do
     with {:ok, %User{} = user} <- GithubConsumer.create_user(params),
-         {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
+         {:ok, token, _claims} <- Guardian.encode_and_sign(user, %{}, ttl: {1, :minute}) do
       conn
       |> put_status(:created)
       |> render("created.json", user: user, token: token)
@@ -20,10 +20,14 @@ defmodule GithubConsumerWeb.UsersController do
   end
 
   def show(conn, %{"id" => id}) do
-    with {:ok, %User{} = user} <- GithubConsumer.get_user(id) do
+    current_token = Guardian.Plug.current_token(conn)
+
+    with {:ok, %User{} = user} <- GithubConsumer.get_user(id),
+         {:ok, _old_stuff, {new_token, _new_claims}} =
+           Guardian.refresh(current_token, ttl: {1, :minute}) do
       conn
       |> put_status(:ok)
-      |> render("user.json", user: user)
+      |> render("user.json", user: user, refresh_token: new_token)
     else
       {:error, reason} ->
         conn
