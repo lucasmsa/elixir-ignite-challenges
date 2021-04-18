@@ -1,0 +1,2 @@
+defmodule GenStructure do
+end
